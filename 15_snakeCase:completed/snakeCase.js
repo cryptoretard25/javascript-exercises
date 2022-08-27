@@ -2,11 +2,12 @@ const { log } = console;
 
 const snakeCase = function (string) {
   //remove '..'+ '-' ', ' '?'+
-  const regexp = /\.+|-|\,\s|\?+/g;
-  string = string.replace(regexp, " ");
-  //work with camelcase
+  const remSymbolsSpaces = /\.+|-|\,\s|\?+/g;
+  string = string.replace(remSymbolsSpaces, " ");
+  //work with camelCase
   if (string.indexOf(" ") < 0) {
-    string = string.replace(/([A-Z][a-z]*)/g, "_$1");
+    const findCamelCase = /([A-Z][a-z]*)/g;
+    string = string.replace(findCamelCase, "_$1");
     return string.toLowerCase();
   }
   return string.trim().toLowerCase().replace(/\s/g, "_");
