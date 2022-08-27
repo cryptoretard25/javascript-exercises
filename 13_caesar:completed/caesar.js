@@ -1,21 +1,21 @@
 const { log } = console;
 
 const caesar = function (string, shift) {
+  const render = (min, max, index) => {
+    return index > max
+      ? String.fromCharCode(index - 26)
+      : index < min
+      ? String.fromCharCode(index + 26)
+      : String.fromCharCode(index);
+  };
+
   const encode = (char) => {
     const SHIFT = shift > 26 || shift < -26 ? shift % 26 : shift;
     const INDEX = char.charCodeAt() + SHIFT;
     if (char.charCodeAt() >= 65 && char.charCodeAt() <= 90) {
-      return INDEX > 90
-        ? String.fromCharCode(INDEX - 26)
-        : INDEX < 65
-        ? String.fromCharCode(INDEX + 26)
-        : String.fromCharCode(INDEX);
+      return render(65, 90, INDEX);
     } else if (char.charCodeAt() >= 97 && char.charCodeAt() <= 122) {
-      return INDEX > 122
-        ? String.fromCharCode(INDEX - 26)
-        : INDEX < 97
-        ? String.fromCharCode(INDEX + 26)
-        : String.fromCharCode(INDEX);
+      return render(97, 122, INDEX);
     } else return;
   };
 
