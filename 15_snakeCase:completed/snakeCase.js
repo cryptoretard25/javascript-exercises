@@ -1,10 +1,10 @@
 const { log } = console;
 
 const snakeCase = function (string) {
-  //remove '..'+ '-' ', ' '?'+
-  const remSymbolsSpaces = /\.+|-|\,\s|\?+/g;
+  //replace symblols '..'+ '-' ', ' '?'+
+  const remSymbolsSpaces = /\'|\.\s|\.+|-|\,\s|\?+/g;
   string = string.replace(remSymbolsSpaces, " ");
-  //work with camelCase
+  //if camelCase
   if (string.indexOf(" ") < 0) {
     const findCamelCase = /([A-Z][a-z]*)/g;
     string = string.replace(findCamelCase, "_$1");
@@ -13,7 +13,7 @@ const snakeCase = function (string) {
   return string.trim().toLowerCase().replace(/\s/g, "_");
 };
 
-log(snakeCase("hello world"));
+log(snakeCase("Hello World"));
 log(snakeCase("Hello, World???"));
 log(snakeCase("This is the song that never ends...."));
 log(snakeCase("thisIsCamelCaseString"));
